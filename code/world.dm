@@ -12,6 +12,8 @@ var/global/datum/global_init/init = new ()
 	turf = /turf/space
 	area = /area/space
 	view = "15x15"
+	hub = "Exadv1.spacestation13"
+	name = "Space Station 13"
 	cache_lifespan = 0	//stops player uploaded stuff from being kept in the rsc past the current session
 
 
@@ -20,6 +22,7 @@ var/global/datum/global_init/init = new ()
 var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 
 /world/New()
+	setListed(TRUE)
 	diary << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
 	diaryofmeanpeople << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
 	if(byond_version < RECOMMENDED_VERSION)
@@ -118,9 +121,6 @@ var/world_topic_spam_protect_time = world.timeofday
 		s["players"] = list()
 		s["roundtime"] = worldtime2text()
 		s["stationtime"] = station_time_timestamp()
-		s["listed"] = "Public"
-		if(!hub_password)
-			s["listed"] = "Invisible"
 		var/player_count = 0
 		var/admin_count = 0
 
@@ -277,13 +277,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(!key_valid)
 			return keySpamProtect(addr)
 		if(input["req"] == "public")
-			hub_password = hub_password_base
-			update_status()
-			return "Set listed status to public."
+			setListed(TRUE)
 		else
-			hub_password = ""
-			update_status()
-			return "Set listed status to invisible."
+			setListed(FALSE)
+
 
 /proc/keySpamProtect(var/addr)
 	if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
@@ -479,6 +476,12 @@ var/failed_old_db_connections = 0
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
 	diaryofmeanpeople = file("data/logs/[date_string] Attack.log")
+
+/world/proc/setListed(var/target)
+	if(target)
+		hub_password = "kMZy3U5jJHSiBQjr"
+	else
+		hub_password = "SORRYNOPASSWORD"
 
 /hook/startup/proc/connectDB()
 	if(!setup_database_connection())
