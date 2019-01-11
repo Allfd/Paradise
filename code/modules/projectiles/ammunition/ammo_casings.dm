@@ -54,6 +54,12 @@
 	caliber = "9mm"
 	projectile_type = /obj/item/projectile/bullet/weakbullet3
 
+/obj/item/ammo_casing/c9mmlaser
+	desc = "A 9mm explosively pumped gas dynamic laser casing."
+	caliber = "9mm"
+	icon_state = "l-casing"
+	projectile_type = /obj/item/projectile/beam/laser
+
 /obj/item/ammo_casing/c9mmap
 	desc = "A 9mm bullet casing."
 	caliber = "9mm"
@@ -234,7 +240,7 @@
 
 /obj/item/ammo_casing/shotgun/laserslug
 	name = "laser slug"
-	desc = "An advanced shotgun shell that uses a micro laser to replicate the effects of a laser weapon in a ballistic package."
+	desc = "An advanced shotgun shell that uses explosively pumped gas dynamic laser to replicate the effects of a laser weapon in a ballistic package."
 	icon_state = "lshell"
 	projectile_type = /obj/item/projectile/beam/laser
 
@@ -383,7 +389,7 @@
 	projectile_type = /obj/item/projectile/bullet/cap
 
 /obj/item/ammo_casing/laser
-	desc = "An experimental laser casing."
+	desc = "A large sized explosively pumped gas dynamic laser casing."
 	caliber = "laser"
 	projectile_type = /obj/item/projectile/beam/laser
 	icon_state = "lasercasing"

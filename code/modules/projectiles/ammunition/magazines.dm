@@ -235,6 +235,8 @@
 	var/ammo = ammo_count()
 	if(ammo && is_rubber())
 		overlays += image('icons/obj/ammo.dmi', icon_state = "enforcer-r")
+	else if(ammo && is_laser())
+		overlays += image('icons/obj/ammo.dmi', icon_state = "enforcer-l")
 
 /obj/item/ammo_box/magazine/enforcer/examine(mob/user, var/distance)
 	..()
@@ -249,9 +251,20 @@
 		return 1
 	return 0
 
+/obj/item/ammo_box/magazine/enforcer/proc/is_laser()//if the topmost bullet is a laser one
+	var/ammo = ammo_count()
+	if(!ammo)
+		return 0
+	if(istype(contents[contents.len], /obj/item/ammo_casing/c9mmlaser))
+		return 1
+	return 0
+
 /obj/item/ammo_box/magazine/enforcer/lethal
 	name = "handgun magazine (9mm)"
 	ammo_type = /obj/item/ammo_casing/c9mm
+
+/obj/item/ammo_box/magazine/enforcer/laser
+	ammo_type = /obj/item/ammo_casing/c9mmlaser
 
 /obj/item/ammo_box/magazine/wt550m9
 	name = "wt550 magazine (4.6x30mm)"
