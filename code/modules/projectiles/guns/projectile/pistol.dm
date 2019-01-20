@@ -72,6 +72,12 @@
 	magazine = new/obj/item/ammo_box/magazine/enforcer/lethal
 	..()
 
+/obj/item/gun/projectile/automatic/pistol/enforcer/laser
+
+/obj/item/gun/projectile/automatic/pistol/enforcer/laser/New()
+	magazine = new/obj/item/ammo_box/magazine/enforcer/laser
+	..()
+
 /obj/item/gun/projectile/automatic/pistol/deagle
 	name = "desert eagle"
 	desc = "A robust .50 AE handgun."
