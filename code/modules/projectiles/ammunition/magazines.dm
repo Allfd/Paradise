@@ -264,6 +264,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 
 /obj/item/ammo_box/magazine/enforcer/laser
+	name = "handgun magazine (9mm-L)"
 	ammo_type = /obj/item/ammo_casing/c9mmlaser
 
 /obj/item/ammo_box/magazine/wt550m9
